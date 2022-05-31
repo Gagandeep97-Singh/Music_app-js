@@ -1,0 +1,55 @@
+ <div class="mp3-box">
+             <div class="pics">
+                 <img src="img/img7.jpg" id="mp3-img" alt="cover-pic">
+             </div>
+             <div class="artist">Ranjit Bawa</div>
+             <div class="song-title">
+                 Mera-Dill
+             </div>
+            <div class="play-font">
+              <audio id="audio" src="music/song1.mp3"></audio>
+                <i class="fa-solid fa-play"></i>
+            </div>
+         </div>
+
+        </div>
+
+        
+function setsong(datas) {
+    const setingdata = datas.map((items) => {
+      const { song, image, artist, title }=items;
+          return   `<div class="mp3-box">
+      <div class="pics">
+          <img src=${image} id="mp3-img" alt="cover-pic">
+      </div>
+      <div class="artist">${artist}</div>
+      <div class="song-title">
+         ${title}
+      </div>
+      <div class="play-font">
+      <audio id="audio" src=${song}></audio>
+         <i class="fa-solid fa-play"></i>
+      </div>
+      </div>
+      </div>`;
+   const setdata= setingdata.join("");
+  
+      songsbox.innerHTML=setdata;
+  
+      const selectsong = document.querySelector(".fa-play");
+      const addsong = selectsong.previousElementSibling.src;
+      const addmusic= addsong.slice(22)
+      const addpic=selectsong.parentElement.parentElement.firstElementChild.firstElementChild.src;
+      const addimg=addpic.slice(22);
+      const addartist=selectsong.parentElement.parentElement.firstElementChild.nextElementSibling.innerHTML;
+      const addtitle=selectsong.parentElement.previousElementSibling.innerHTML;
+     
+  
+      selectsong.addEventListener("click", () =>{
+        console.log('selected')
+      })
+    });
+  }
+  
+  setsong(content);
+  
